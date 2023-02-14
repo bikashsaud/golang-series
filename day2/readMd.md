@@ -62,3 +62,8 @@ byte        alias for uint8
 rune        alias for int32
 
 ```
+
+> Importent Note:
+- for public variable use First latter is Capital 
+- EG: const Token = "ashdkj-s0-aisdas"
+- 
