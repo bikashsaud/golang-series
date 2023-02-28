@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-const url = "http://lco.dev"
+const url = "https://archive.org/metadata/TheAdventuresOfTomSawyer_201303"
 
 func main() {
 	fmt.Println("Web request response handle in Go.")
