@@ -37,5 +37,5 @@ func PerformGetRequest() {
 	fmt.Println("\nrow data: ", byteCounter)
 	fmt.Println("\ndata", string(responseString.String()))
 	fmt.Println("\ndata", responseString)
-
+	
 }
