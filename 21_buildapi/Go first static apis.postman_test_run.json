@@ -1,0 +1,150 @@
+{
+	"id": "662f4a93-929d-40b2-836e-6577f6e985a3",
+	"name": "Go first static apis",
+	"timestamp": "2023-03-05T12:08:22.385Z",
+	"collection_id": "18356132-d1c88fdd-23b0-4bdc-8fb5-f4e8fc435b63",
+	"folder_id": 0,
+	"environment_id": "18356132-ddc7ce19-6d24-4dd5-852a-1effa0ea9e77",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "2fbd2e34-712e-4427-bb01-e6a6160d4a19",
+			"name": "home",
+			"url": "http://localhost:4000/",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "23ef8c51-0d40-4c6c-ba90-af1bb805ca9e",
+			"name": "all course",
+			"url": "http://localhost:4000/courses",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d775a22c-c147-4f29-ace8-62e8553aa824",
+			"name": "get course by id",
+			"url": "http://localhost:4000/course/2",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "17b191f4-6eb3-4a28-9cb1-a1d716f1756c",
+			"name": "add course",
+			"url": "http://localhost:4000/course",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e201fe95-9e30-4199-a6d0-82b01b6deff7",
+			"name": "update course",
+			"url": "http://localhost:4000/course/75",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "482c0df8-85dd-4806-926c-c0d7e3620ef0",
+			"name": "delete course",
+			"url": "http://localhost:4000/course/80",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 27,
+	"collection": {
+		"requests": [
+			{
+				"id": "2fbd2e34-712e-4427-bb01-e6a6160d4a19",
+				"method": "GET"
+			},
+			{
+				"id": "23ef8c51-0d40-4c6c-ba90-af1bb805ca9e",
+				"method": "GET"
+			},
+			{
+				"id": "d775a22c-c147-4f29-ace8-62e8553aa824",
+				"method": "GET"
+			},
+			{
+				"id": "17b191f4-6eb3-4a28-9cb1-a1d716f1756c",
+				"method": "POST"
+			},
+			{
+				"id": "e201fe95-9e30-4199-a6d0-82b01b6deff7",
+				"method": "PUT"
+			},
+			{
+				"id": "482c0df8-85dd-4806-926c-c0d7e3620ef0",
+				"method": "DELETE"
+			}
+		]
+	}
+}
