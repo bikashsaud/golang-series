@@ -87,7 +87,7 @@ func deleteAllMovie() int64 {
 	return deleteall.DeleteCount
 }
 
-func getMovies(movieId string) []primitive.M {
+func getMovies() []primitive.M {
 
 	cur, err := collection.Find(context.Background(), bson.D{{}})
 
@@ -132,7 +132,7 @@ func CreateMovie(w http.ResponseWriter, r *http.Request) {
 
 func MarkAsWatched(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/x-www-form-urlencode")
-	w.Header().Set("Allow-Control-Allow-Methods", "POST")
+	w.Header().Set("Allow-Control-Allow-Methods", "PUT")
 
 	// get ad from params
 
@@ -142,5 +142,25 @@ func MarkAsWatched(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Update Movie: ", params["id"])
 	json.NewEncoder(w).Encode(params)
 	return
+
+}
+
+func DeleteMovie(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/x-www-form-urlencode")
+	w.Header().Set("Allow-Control-Allow-Methods", "DELETE")
+
+	params := mux.Vars(r)
+
+	deleteMovie(params["id"])
+	json.NewEncoder(w).Encode(params["id"])
+
+}
+
+func DeleteAllMovie(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/x-www-form-urlencode")
+	w.Header().Set("Allow-Control-Allow-Methods", "DELETE")
+
+	count := deleteAllMovie()
+	json.NewEncoder(w).Encode(count)
 
 }
