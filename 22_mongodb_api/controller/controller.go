@@ -9,10 +9,10 @@ import (
 
 	"github.com/bikashsaud/mongodb_api/models"
 	"github.com/gorilla/mux"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/x/mongo/driver/mongocrypt/options"
 )
 
 const connectionString = "mongodb+srv://bikashsaud:Djangoapp514@cluster0.icctrwy.mongodb.net/?retryWrites=true&w=majority"
@@ -28,7 +28,7 @@ func init() { //only first time to initialize
 	// client connection
 	clientOption := options.Client().ApplyURI(connectionString)
 	// connect to MongoDB
-	client, err := mongo.connect(context.TODO(), clientOption) //context.TODO and context.Background two ways...
+	client, err := mongo.Connect(context.TODO(), clientOption) //context.TODO and context.Background two ways...
 	if err != nil {
 		// panic("error", err)
 		log.Fatal(err)
@@ -44,11 +44,12 @@ func init() { //only first time to initialize
 // mongoDB helpers ---> make separate files is better practice
 
 func addMovie(movie models.Netflix) {
+	fmt.Println("Adding Movie Data to db.")
 	add, err := collection.InsertOne(context.Background(), movie)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Inserted data to bd", add.InsertedId)
+	fmt.Println("Inserted data to bd", add.InsertedID)
 }
 
 // update a movie
@@ -57,11 +58,11 @@ func updateMovie(movieId string) {
 	filter := bson.M{"_id": id}
 	update := bson.M{"$set": bson.M{"watched": true}}
 
-	update, err := collection.UpdateOne(context.Background(), filter, update)
+	result, err := collection.UpdateOne(context.Background(), filter, update)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Modify count:", update.ModifiedCount)
+	fmt.Println("Modify count:", result.ModifiedCount)
 }
 
 func deleteMovie(movieId string) {
@@ -76,15 +77,14 @@ func deleteMovie(movieId string) {
 }
 
 func deleteAllMovie() int64 {
-	filter := bson.D{{}}
-	deleteall, err := collection.DeleteMany(context.Background(), filter, nil)
+	deleteResult, err := collection.DeleteMany(context.Background(), bson.D{{}}, nil)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("deleted all movies: ", deleteall.DeleteCount)
-	return deleteall.DeleteCount
+	fmt.Println("deleted all movies: ", deleteResult.DeletedCount)
+	return deleteResult.DeletedCount
 }
 
 func getMovies() []primitive.M {
@@ -124,6 +124,7 @@ func GetAllMovies(w http.ResponseWriter, r *http.Request) {
 func CreateMovie(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/x-www-form-urlencode")
 	w.Header().Set("Allow-Control-Allow-Methods", "POST")
+	fmt.Println("getting movie post data...")
 	var movie models.Netflix
 	json.NewDecoder(r.Body).Decode(&movie)
 	addMovie(movie)
