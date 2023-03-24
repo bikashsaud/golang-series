@@ -31,7 +31,6 @@ func modifyPerson(p Person) {
 	p.Name = "Harmanprit Singh"
 	p.Age = 21
 	fmt.Println("Inside the function is applied but not globle moidfy.", p)
-
 }
 
 func modifyPersonPtr(p *Person) {
